@@ -1,8 +1,7 @@
 ﻿var request = require.safe('request');
 var idiot = require.once('./idiot.json');
 var i = 0;
-
-//request.get('http://api.urbandictionary.com/v0/define?term=', (err, response, body)
+var indexes = {};
 
 exports.match = function(text, commandPrefix) {
     return text.startsWith(commandPrefix + "urban");
@@ -23,12 +22,15 @@ exports.run = function(api, event) {
     if (word.trim().length === 0) {
         return idiotMessage(api, event);
     }
+    if (!indexes[word]) {
+        indexes[word] = 0;
+    }
     request.get('http://api.urbandictionary.com/v0/define?term=' + word, (err, response, body) => {
         body = JSON.parse(body);
         if (body.list == null || body.list.length === 0) {
             return idiotMessage(api, event);
         }
-        api.sendMessage(word + ": " + body.list[0].definition, event.thread_id);
-        api.sendMessage("Example: " + body.list[0].example, event.thread_id);
+        api.sendMessage(word + ": " + body.list[indexes[word]++%body.list.length].definition, event.thread_id);
+        api.sendMessage("Example: " + body.list[indexes[word]++ % body.list.length].example, event.thread_id);
     });
 };
