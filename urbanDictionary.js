@@ -1,4 +1,4 @@
-﻿var request = require.safe('request');
+﻿var request = require('request');
 var idiot = require.once('./idiot.json');
 var i = 0;
 var indexes = {};

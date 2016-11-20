@@ -1,5 +1,5 @@
 ﻿{
   "name": "urban",
-  "version": 1.0,
+  "version": 1.1,
   "startup": "urbanDictionary.js"
 }
