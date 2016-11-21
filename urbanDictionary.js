@@ -3,14 +3,6 @@ var idiot = require.once('./idiot.json');
 var i = 0;
 var indexes = {};
 
-exports.match = function(text, commandPrefix) {
-    return text.startsWith(commandPrefix + "urban");
-};
-
-exports.help = function() {
-    return [[this.commandPrefix + "urban {word}", "Searches Urban Dictionary for word"]];
-};
-
 var idiotMessage = function(api, event) {
     api.sendMessage("Unable to find a definition of that word. But this describes you: \nIdiot: " + idiot.list[i++ % idiot.list.length].definition, event.thread_id);
 }

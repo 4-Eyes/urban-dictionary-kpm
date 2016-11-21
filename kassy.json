@@ -1,5 +1,7 @@
 ﻿{
   "name": "urban",
   "version": 1.1,
-  "startup": "urbanDictionary.js"
+  "startup": "urbanDictionary.js",
+  "command": "urban",
+  "help": [["{{commandPrefix}}urban {word}", "Searches Urban Dictionary for word"]]
 }
