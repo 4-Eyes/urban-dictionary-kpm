@@ -1,5 +1,5 @@
 ﻿var request = require('request');
-var idiot = require.once('./idiot.json');
+var idiot = require('./idiot.json');
 var i = 0;
 var indexes = {};
 
